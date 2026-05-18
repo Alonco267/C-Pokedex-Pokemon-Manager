@@ -1,68 +1,46 @@
-# Pokedex Manager 3000
+# PokéBST: Advanced Data Structures in C ⚡️
 
-> **"Gotta store 'em all (in a BST)!"** – Some random Oak guy
+Welcome to **PokéBST** (formerly Pokedex Manager 3000), a robust, console-based Pokémon management system written entirely in C. 
 
-Welcome to **Pokedex Manager 3000**, a thrilling console-based system for:
+This project simulates a Pokémon ecosystem where trainers (Owners) can catch Pokémon, engage in battles, evolve their roster, and even merge collections. Under the hood, the system is a rigorous exercise in memory management and complex data structures, utilizing **Binary Search Trees (BST)** and **Circular Linked Lists**.
 
-- Creating your own Pokémon trainers (Owners),
-- Assigning them a majestic BST (Binary Search Tree) of Pokémon,
-- Doing epic fights, evolutions, merges, or just lazing around with your fuzzy data structures.
+## 🧠 Technical Architecture
 
-## Features That'll Blow Your Mind
+This project was built to practice deep algorithmic concepts and manual memory management:
+* **Circular Linked List:** Used to manage the Pokémon trainers. This allows seamless, infinite navigation between owners without boundary limits.
+* **Binary Search Tree (BST):** Each trainer's Pokédex is implemented as a BST. This ensures efficient insertion, searching, and traversal of Pokémon based on their IDs.
+* **Breadth-First Search (BFS):** Utilized during the merging of two Pokédexes to copy the tree structures efficiently.
+* **Memory Safety:** Strictly tested with `valgrind` to ensure zero memory leaks, even during complex tree-merging and node deletion operations.
 
-- **New Pokedex Creation**  
-  Because what is life without a brand-new Bulbasaur or Charmander?
+## ✨ Core Features
 
-- **Fight!**  
-  Let your creatures settle scores. Or watch them tie. It's all about the 1.5×Attack + 1.2×HP, baby!
+* **Trainer Management:** Create new owners and navigate through them in a continuous circular loop.
+* **Pokédex Expansion:** Insert new Pokémon into a trainer's BST, dynamically allocating memory and maintaining tree balance.
+* **Battle System:** Let your creatures brawl! Battles are calculated using a custom algorithm: `Score = (1.5 × Attack) + (1.2 × HP)`.
+* **Evolutions:** Evolve your Pokémon effortlessly. The system upgrades the Pokémon to `ID + 1` while maintaining the integrity of the BST.
+* **Pokédex Merging:** Combine two trainers into one. The system uses a BFS algorithm to merge the BSTs, transferring all Pokémon to the victor while cleanly deleting and freeing the memory of the defeated trainer.
 
-- **Evolutions**  
-  We keep it simple: ID + 1 is the next step. Magic? Possibly. But who are we to question Pokémon logic?
+## 🚀 Getting Started
 
-- **Merging**  
-  Two owners walk into a bar; only one walks out –– with both Pokedexes combined. The other is “mysteriously” gone afterward.
+### Prerequisites
+* GCC Compiler
+* Valgrind (for memory leak testing)
 
-- **Circular Linked List**  
-  Because life is a circle. Also because we want you to practice. You can loop around and around the owners like a carnival ride.
+### Compilation
+Compile the project with strict warning flags to ensure code quality:
+```bash
+gcc -Wall -Wextra -Werror -g -std=c99 ex6.c -o ex6
+Execution
+Run the program. It is highly recommended to run it through Valgrind to monitor memory usage:
 
-## Getting Started
+Bash
+valgrind --leak-check=full ./ex6 < input.txt
+(Follow the interactive console prompts to create trainers, add Pokémon, and battle).
 
-1. **Compile**  
-   Use your favorite modern or ancient build tools. Something like:
-   gcc -Wall -Wextra -Werror -g -std=c99 ex6.c -o ex6
-   Or pray to the compiler gods that everything runs.
+⚠️ Important Notes
+Input Handling: The system robustly handles CRLF (\r\n) issues and trims trailing characters for cross-OS compatibility.
 
-2. **Run**  
-valgrind ./ex6 < input.txt
+Disclaimer: No real Pokémon were harmed in the making of this BST. Please do not feed your Bulbasaur after midnight.
 
-Then follow the prompts. 
-- Enter owners’ names,
-- Insert Pokémon,
-- Evolve them or make them brawl in the ring,
-- Or do a fancy merge and watch an entire owner vanish from existence!
-
-3. **Exit**  
-At any time, use the “Exit” option. The program will say a final goodbye. Possibly weeping in the background.
-
-## FAQ (Fancifully Asked Questions)
-
-**Q: Where did my second owner go after merging?**  
-A: The second owner is very tired from the BFS copying process and took a permanent nap. No tears, only data structure serenity.
-
-**Q: What if I have leftover \r from ancient times?**  
-A: Fear not, we have trimmed them! Or at least, we have a cunning plan to handle CRLF. 
-
-**Q: Why can’t I see the source code magic?**  
-A: This project is about learning. We want you to focus on your own approach and watch out for BST illusions and pointers.  
-   But if you really want, here is a youtube video that solves the excercise step by step: https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab
-
-**Q: Does the code leak memory?**  
-A: We sure tried our best.
-
-## Final Notes
-- **Disclaimer**: No real Pokémon were harmed.  
-- **Pro Tip**: Don’t feed your Bulbasaur after midnight. 
-- **Have Fun**: Tinker with merges, do fights, test extremes. Explore the labyrinth of pointers!
-
-That’s all, folks. Jump in, compile, and see if you can **destroy** your data structures in ways we never imagined. Good luck!
-
+Author: Alon Cohen
+Software Engineering, Bar-Ilan University
